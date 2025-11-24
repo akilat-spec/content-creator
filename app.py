@@ -157,45 +157,7 @@ try:
         )
     
     # Optional PDF upload section
-    with st.expander("🎨 Optional: Apply Specific Writing Style from PDF", expanded=False):
-        st.write("Upload a PDF document to extract and mimic its writing style:")
-        uploaded_file = st.file_uploader(
-            "Choose PDF file",
-            type="pdf",
-            help="Upload a document whose writing style you want to mimic",
-            label_visibility="collapsed"
-        )
-        
-        if uploaded_file is not None:
-            st.info(f"📄 File uploaded: {uploaded_file.name}")
-            
-            with st.spinner("Extracting text from PDF..."):
-                text = extract_text_from_pdf(uploaded_file)
-            
-            if text and text.strip():
-                st.success("✅ Text extracted successfully!")
-                
-                if st.button("Analyze Writing Style from PDF"):
-                    with st.spinner("Analyzing writing style..."):
-                        try:
-                            style_profile = analyze_style(text)
-                            st.session_state.style_profile = style_profile
-                            st.success("🎭 Writing style analyzed and saved!")
-                            
-                            with st.expander("View Style Analysis"):
-                                st.text_area("Style Profile", value=style_profile, height=200, label_visibility="collapsed")
-                        except Exception as e:
-                            st.error(f"Error analyzing style: {e}")
-            else:
-                st.error("❌ Could not extract text from the PDF. The file might be scanned or corrupted.")
-    
-    # Additional instructions
-    additional_instructions = st.text_area(
-        "**Additional Instructions (Optional):**",
-        placeholder="Any specific requirements, key points to include, tone preferences, or special instructions...",
-        height=100
-    )
-    
+   
     # Generate button
     if st.button("🚀 Generate Content", type="primary", use_container_width=True):
         if not topic or not topic.strip():
