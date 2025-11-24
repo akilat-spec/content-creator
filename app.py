@@ -10,7 +10,7 @@ load_dotenv()
 
 st.set_page_config(page_title="Style Mimic AI", page_icon="✍️", layout="wide")
 
-st.title("✍️ Style Mimic AI")
+
 st.markdown("Extract writing style from a PDF and generate new content in that style.")
 
 # Sidebar for API Key
