@@ -10,7 +10,7 @@ load_dotenv()
 
 st.set_page_config(page_title="Style Mimic AI", page_icon="✍️", layout="wide")
 
-
+st.title("✍️ Style Mimic AI")
 st.markdown("Extract writing style from a PDF and generate new content in that style.")
 
 # Sidebar for API Key
@@ -61,6 +61,13 @@ if api_key:
                 if 'generated_content' in st.session_state:
                     st.subheader("Generated Content")
                     st.markdown(st.session_state.generated_content)
+                    
+                    st.divider()
+                    with st.spinner("Predicting engagement metrics..."):
+                        from src.engagement_predictor import predict_engagement
+                        metrics = predict_engagement(st.session_state.generated_content, topic)
+                        st.subheader("🔮 Predicted Engagement Metrics")
+                        st.info(metrics)
         else:
             st.error("Could not extract text from the PDF.")
 else:
