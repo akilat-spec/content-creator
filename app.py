@@ -27,6 +27,13 @@ st.markdown("Extract writing style from a PDF and generate new content in that s
 #         st.warning("Please enter your Google Gemini API Key to proceed.")
 
 # Main content
+api_key = os.getenv("GOOGLE_API_KEY")
+if api_key:
+                              
+            configure_genai(api_key)
+            st.success("API Key configured!")
+else:
+        st.warning("Please enter your Google Gemini API Key to proceed.")
 if api_key:
     uploaded_file = st.file_uploader("Upload a PDF file to analyze style", type="pdf")
 
