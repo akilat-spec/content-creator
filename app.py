@@ -13,18 +13,18 @@ st.set_page_config(page_title="Style Mimic AI", page_icon="✍️", layout="wide
 
 st.markdown("Extract writing style from a PDF and generate new content in that style.")
 
-# Sidebar for API Key
-with st.sidebar:
-    st.header("Configuration")
-    api_key = st.text_input("Enter Google Gemini API Key", type="password")
-    if not api_key:
-        api_key = os.getenv("GOOGLE_API_KEY")
+# # Sidebar for API Key
+# with st.sidebar:
+#     st.header("Configuration")
+#     api_key = st.text_input("Enter Google Gemini API Key", type="password")
+#     if not api_key:
+#         api_key = os.getenv("GOOGLE_API_KEY")
     
-    if api_key:
-        configure_genai(api_key)
-        st.success("API Key configured!")
-    else:
-        st.warning("Please enter your Google Gemini API Key to proceed.")
+#     if api_key:
+#         configure_genai(api_key)
+#         st.success("API Key configured!")
+#     else:
+#         st.warning("Please enter your Google Gemini API Key to proceed.")
 
 # Main content
 if api_key:
